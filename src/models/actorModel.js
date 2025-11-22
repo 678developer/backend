@@ -7,13 +7,6 @@ exports.getAllActors = async () => {
    return rows;
 };
 
-exports.getAllActorsSP = async () => {
-   const sql = "CALL sp_get_all_actors()";
-   const [rows] = await pool.query(sql);
-   return rows[0];  // <--- Stored procedure results are inside rows[0]
-};
-
-
 exports.getActorById= async(id)=>{
   const query= "select * from actor where actor_id= ?"
   const [rows]= await pool.execute(query, [id]) 
